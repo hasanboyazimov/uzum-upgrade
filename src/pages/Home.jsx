@@ -1,35 +1,28 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useState } from "react";
 
-const ACTIONS = {
-  INCREMENT: "incement",
-  DECREMENT: "decrement",
-};
+const ACTIONS = {};
 
-function reducer(state, action) {
-  switch (action.type) {
-    case ACTIONS.INCREMENT:
-      return { count: state.count + 1 };
-    case ACTIONS.DECREMENT:
-      return { count: state.count - 1 };
-  }
-}
+function reducer(state, action) {}
 
 function Home() {
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
+  const [todos, dispatch] = useReducer(reducer, []);
+  const [name, setName] = useState("");
 
-  function increment() {
-    dispatch({ type: ACTIONS.INCREMENT });
-  }
+  function handleSumnit() {}
 
-  function decrement() {
-    dispatch({ type: ACTIONS.DECREMENT });
-  }
   return (
-    <div>
-      <button className="btn" onClick={increment}>+</button>
-      <span className="p-2">{state.count}</span>
-      <button className="btn" onClick={decrement}>-</button>
-    </div>
+    <>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => {
+            e.preventDefault();
+            setName(e.target.value);
+          }}
+        />
+      </form>
+    </>
   );
 }
 

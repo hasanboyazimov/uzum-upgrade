@@ -1,10 +1,11 @@
 // rrd imports
-import { Form } from "react-router-dom";
+import { Form, useActionData } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 //components
 import {} from "../components";
 import FormInput from "../components/FormInput";
+import { useEffect } from "react";
 
 //action
 export const action = async ({ request }) => {
@@ -15,6 +16,13 @@ export const action = async ({ request }) => {
 };
 
 function Login() {
+  const userData = useActionData();
+
+  useEffect(() => {
+    if (userData) {
+      console.log(userData);
+    }
+  }, [userData]);
   return (
     <div className="auth-container">
       <div className="auth-left">

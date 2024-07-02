@@ -9,6 +9,7 @@ import FormInput from "../components/FormInput";
 //react imports
 import { useEffect } from "react";
 
+
 //action
 export const action = async ({ request }) => {
   let formData = await request.formData();
@@ -19,8 +20,12 @@ export const action = async ({ request }) => {
   return {displayName, photoUrl, email, pasword};
 };
 
+//custom hooks
+import { useRegister } from "../hooks/useRegister";
+
 function Register() {
   const userData = useActionData()
+  const {isPending, registerWithGoogle} = useRegister()
 
   useEffect(() => {
     if(userData) {
@@ -46,7 +51,7 @@ function Register() {
             <button className="btn btn-primary btn-block">Register</button>
           </div>
           <div className="w-full">
-            <button className="btn btn-secondary btn-block">Google</button>
+            <button onClick={registerWithGoogle} className="btn btn-secondary btn-block">Google</button>
           </div>
           <div className="text-center">
             <p className="text-slate-500">
