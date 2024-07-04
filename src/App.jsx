@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 
 //pages
-import { Home, About, Contact, Login, Register } from "./pages";
+import { Home, About, Contact, Login, Register, SingleProduct } from "./pages";
 
 //layouts
 import RootLayout from "./layout/RootLayaout";
@@ -19,14 +19,13 @@ import { action as LoginAction } from "./pages/Login";
 import Protect from "./components/Protect";
 
 //context
-import {useGlobalContext} from "./hooks/useGlobalContext";
+import { useGlobalContext } from "./hooks/useGlobalContext";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebaseConfig";
 
-
 function App() {
-  const  {user, dispatch, isAuthReady}  = useGlobalContext();
+  const { user, dispatch, isAuthReady } = useGlobalContext();
   console.log(user);
   const routes = createBrowserRouter([
     {
@@ -51,6 +50,10 @@ function App() {
           path: "/About",
           element: <About />,
         },
+        {
+          path: "/:id",
+          element: <SingleProduct />,
+        },
       ],
     },
     {
@@ -67,10 +70,10 @@ function App() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      dispatch({type: "LOG_IN", payload: user})
-      dispatch({type: "IS_AUTH_READY"})
-    })
-  }, [])
+      dispatch({ type: "LOG_IN", payload: user });
+      dispatch({ type: "IS_AUTH_READY" });
+    });
+  }, []);
 
   return <>{isAuthReady && <RouterProvider router={routes} />}</>;
 }

@@ -4,21 +4,21 @@ const Footer = () => {
   return (
     <footer className="bg-gray-100 py-8  ">
       <div className="container max-w-[1240px] mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div>
+        <div className='hidden md:block lg:blog xl:block 2xl:block'>
           <h3 className="text-lg font-semibold mb-4">О нас</h3>
           <ul>
             <li className="mb-2"><a href="#" className="text-gray-600 hover:text-gray-800">Пункты выдачи</a></li>
             <li className="mb-2"><a href="#" className="text-gray-600 hover:text-gray-800">Вакансии</a></li>
           </ul>
         </div>
-        <div>
+        <div className='hidden md:block lg:blog xl:block 2xl:block'>
           <h3 className="text-lg font-semibold mb-4">Пользователям</h3>
           <ul>
             <li className="mb-2"><a href="#" className="text-gray-600 hover:text-gray-800">Связаться с нами</a></li>
             <li className="mb-2"><a href="#" className="text-gray-600 hover:text-gray-800">Вопрос - Ответ</a></li>
           </ul>
         </div>
-        <div>
+        <div className='hidden md:block lg:blog xl:block 2xl:block'>
           <h3 className="text-lg font-semibold mb-4">Для предпринимателей</h3>
           <ul>
             <li className="mb-2"><a href="#" className="text-gray-600 hover:text-gray-800">Продавайте на Uzum</a></li>

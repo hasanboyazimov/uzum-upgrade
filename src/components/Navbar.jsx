@@ -12,20 +12,20 @@ import { useGlobalContext } from "../hooks/useGlobalContext";
 
 //firebase
 import { signOut } from "firebase/auth";
-import {auth} from "../firebase/firebaseConfig"
+import { auth } from "../firebase/firebaseConfig";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
   const { user } = useGlobalContext();
 
   const signOutProfile = async () => {
-    await signOut(auth)
-    toast.success("See you soon...")
-  }
+    await signOut(auth);
+    toast.success("See you soon...");
+  };
 
   return (
     <div className="container max-w-[1240px] mr-auto ml-auto">
-      <div className="bg-gray-100 p-2 text-sm flex justify-between items-center">
+      <div className="hidden bg-gray-100 p-2 text-sm lg:flex justify-between items-center">
         <div>
           <span>
             Город: <span className="font-bold">Ташкент</span>
@@ -48,7 +48,11 @@ const Navbar = () => {
             alt="Uzum Market Logo"
             className="h-10 mr-4"
           />
-          <div className="px-4 py-2 bg-purple-100 text-purple-600 rounded cursor-pointer">
+
+          <div
+            data-tip="will be soon..."
+            className="tooltip px-4 py-2 bg-purple-100 text-purple-600 rounded cursor-pointer"
+          >
             Каталог
           </div>
         </div>
@@ -77,12 +81,13 @@ const Navbar = () => {
             >
               <li>
                 <div>
-              
                   <p>{user.displayName}</p>
                 </div>
               </li>
               <li>
-                <button onClick={signOutProfile} className="btn btn-secondary">Log out</button>
+                <button onClick={signOutProfile} className="btn btn-secondary">
+                  Log out
+                </button>
               </li>
             </ul>
           </div>
