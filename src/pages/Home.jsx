@@ -1,23 +1,33 @@
 import React, { useReducer, useState } from "react";
 
-const ACTIONS = {};
+const ACTIONS = {
+  ADD_TODO: "add-todo"
+};
 
-function reducer(state, action) {}
+function reducer(todos, action) {
+  switch (action.type) {
+    case ACTIONS.ADD_TODO:
+      return [...todos]
+  }
+}
 
 function Home() {
   const [todos, dispatch] = useReducer(reducer, []);
   const [name, setName] = useState("");
 
-  function handleSumnit() {}
+  function handleSumnit(e) {
+    e.preventDefault();
+    dispatch({type: ACTIONS.ADD_TODO})
+    setName('')
+  }
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSumnit}>
         <input
           type="text"
           value={name}
           onChange={(e) => {
-            e.preventDefault();
             setName(e.target.value);
           }}
         />

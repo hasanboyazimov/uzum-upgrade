@@ -9,33 +9,34 @@ import FormInput from "../components/FormInput";
 //react imports
 import { useEffect } from "react";
 
-
 //action
 export const action = async ({ request }) => {
   let formData = await request.formData();
   let displayName = formData.get("displayName");
-  let photoUrl = formData.get("photoUrl")
-  let email = formData.get("email")
-  let pasword = formData.get("pasword")
-  return {displayName, photoUrl, email, pasword};
+  let photoUrl = formData.get("photoUrl");
+  let email = formData.get("email");
+  let pasword = formData.get("pasword");
+  return { displayName, photoUrl, email, pasword };
 };
 
 //custom hooks
 import { useRegister } from "../hooks/useRegister";
 
 function Register() {
-  const userData = useActionData()
-  const {isPending, registerWithGoogle} = useRegister()
+  const userData = useActionData();
+  const { isPending, registerWithGoogle } = useRegister();
 
   useEffect(() => {
-    if(userData) {
-      console.log(userData)
+    if (userData) {
+      console.log(userData);
     }
-  }, [userData])
+  }, [userData]);
   return (
     <div className="auth-container">
       <div className="auth-left">
-        <p className="text-7xl text-slate-100 text-center transition">Registar</p>
+        <p className="text-7xl text-slate-100 text-center transition">
+          Registar
+        </p>
       </div>
       <div className="auth-right">
         <Form
@@ -51,11 +52,23 @@ function Register() {
             <button className="btn btn-primary btn-block">Register</button>
           </div>
           <div className="w-full">
-            <button onClick={registerWithGoogle} className="btn btn-secondary btn-block">Google</button>
+            {isPending && (
+              <button type="button" className="btn btn-secondary btn-block">
+                Loading...
+              </button>
+            )}
+            {!isPending && (
+              <button
+                onClick={registerWithGoogle}
+                className="btn btn-secondary btn-block"
+              >
+                Google
+              </button>
+            )}
           </div>
           <div className="text-center">
             <p className="text-slate-500">
-              If you have an account,{" "}
+              If you have an account,
               <Link className="link link-primary" to="/login">
                 Login
               </Link>

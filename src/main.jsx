@@ -4,9 +4,13 @@ import App from "./App.jsx";
 import "./index.css";
 import GlobalContexProvider from "./context/GlobalContex.jsx";
 
+//toast
+import { Toaster } from "react-hot-toast";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <GlobalContexProvider>
-    //  {" "}
+  <GlobalContexProvider>
     <App />
-  //  </GlobalContexProvider>
+    <Toaster />
+    //{" "}
+  </GlobalContexProvider>
 );

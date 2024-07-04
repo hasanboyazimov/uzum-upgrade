@@ -15,8 +15,13 @@ export const action = async ({ request }) => {
   return { email, pasword };
 };
 
+//custom hooks
+import {useRegister} from "../hooks/useRegister"
+
 function Login() {
   const userData = useActionData();
+
+  const {isPending, registerWithGoogle} = useRegister()
 
   useEffect(() => {
     if (userData) {
@@ -39,9 +44,19 @@ function Login() {
             </button>
           </div>
           <div className="w-full">
-            <button type="button" className="btn btn-secondary btn-block">
-              Google
-            </button>
+          {isPending && (
+              <button type="button" className="btn btn-secondary btn-block">
+                Loading...
+              </button>
+            )}
+            {!isPending && (
+              <button
+                onClick={registerWithGoogle}
+                className="btn btn-secondary btn-block"
+              >
+                Google
+              </button>
+            )}
           </div>
           <div className="text-center">
             <p className="text-slate-500">

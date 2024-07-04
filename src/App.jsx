@@ -14,17 +14,25 @@ import ErrorPage from "./pages/ErrorPage";
 //actions
 import { action as RegisterAction } from "./pages/Register";
 import { action as LoginAction } from "./pages/Login";
+
 // componet
 import Protect from "./components/Protect";
 
+//context
+import {useGlobalContext} from "./hooks/useGlobalContext";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/firebaseConfig";
+
+
 function App() {
-  const user = false;
+  const  {user, dispatch, isAuthReady}  = useGlobalContext();
+  console.log(user);
   const routes = createBrowserRouter([
     {
       path: "/",
       element: (
         <Protect user={user}>
-          {" "}
           <RootLayout />
         </Protect>
       ),
@@ -57,7 +65,14 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={routes} />;
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      dispatch({type: "LOG_IN", payload: user})
+      dispatch({type: "IS_AUTH_READY"})
+    })
+  }, [])
+
+  return <>{isAuthReady && <RouterProvider router={routes} />}</>;
 }
 
 export default App;
