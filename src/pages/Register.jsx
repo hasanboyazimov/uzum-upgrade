@@ -13,10 +13,10 @@ import { useEffect } from "react";
 export const action = async ({ request }) => {
   let formData = await request.formData();
   let displayName = formData.get("displayName");
-  let photoUrl = formData.get("photoUrl");
+  let photoURL = formData.get("photoURL");
   let email = formData.get("email");
   let pasword = formData.get("pasword");
-  return { displayName, photoUrl, email, pasword };
+  return { displayName, photoURL, email, pasword };
 };
 
 //custom hooks
@@ -24,11 +24,17 @@ import { useRegister } from "../hooks/useRegister";
 
 function Register() {
   const userData = useActionData();
-  const { isPending, registerWithGoogle } = useRegister();
+  const { isPending, registerWithGoogle, registerEmailAndPassword } =
+    useRegister();
 
   useEffect(() => {
     if (userData) {
-      console.log(userData);
+      registerEmailAndPassword(
+        userData.email,
+        userData.pasword,
+        userData.displayName,
+        userData.photoURL
+      );
     }
   }, [userData]);
   return (
@@ -49,11 +55,16 @@ function Register() {
           <FormInput name="email" type="email" label="email" />
           <FormInput name="pasword" type="pasword" label="pasword" />
           <div className="mt-6">
-            <button className="btn btn-primary btn-block">Register</button>
+            {isPending && (
+              <button disabled className="btn btn-primary btn-block">Loading...</button>
+            )}
+            {!isPending && (
+              <button className="btn btn-primary btn-block">Register</button>
+            )}
           </div>
           <div className="w-full">
             {isPending && (
-              <button type="button" className="btn btn-secondary btn-block">
+              <button disabled type="button" className="btn btn-secondary btn-block">
                 Loading...
               </button>
             )}

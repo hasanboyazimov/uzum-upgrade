@@ -16,16 +16,17 @@ export const action = async ({ request }) => {
 };
 
 //custom hooks
-import {useRegister} from "../hooks/useRegister"
+import { useRegister } from "../hooks/useRegister";
+import { useLogin } from "../hooks/useLogin";
 
 function Login() {
   const userData = useActionData();
-
-  const {isPending, registerWithGoogle} = useRegister()
+  const { isPending, registerWithGoogle } = useRegister();
+  const { isPending: isPendingLogin, signIn } = useLogin();
 
   useEffect(() => {
     if (userData) {
-      console.log(userData);
+      signIn(userData.email, userData.pasword);
     }
   }, [userData]);
   return (
@@ -34,17 +35,28 @@ function Login() {
         <p className="text-7xl text-slate-100 text-center ">Login</p>
       </div>
       <div className="auth-right">
-        <Form className="flex flex-col gap-2 w-96 bg-base-100 shadow-xl p-8">
+        <Form action="post" className="flex flex-col gap-2 w-96 bg-base-100 shadow-xl p-8">
           <h1 className="text-3xl font-semibold text-center">Login</h1>
           <FormInput name="email" type="email" label="email" />
           <FormInput name="pasword" type="pasword" label="pasword" />
           <div className="mt-6">
-            <button type="submit" className="btn btn-primary btn-block">
-              Login
-            </button>
+            {isPendingLogin && (
+              <button
+                disabled
+                type="button"
+                className="btn btn-primary btn-block"
+              >
+                Loading...
+              </button>
+            )}
+            {!isPendingLogin && (
+              <button type="submit" className="btn btn-primary btn-block">
+                Login
+              </button>
+            )}
           </div>
           <div className="w-full">
-          {isPending && (
+            {isPending && (
               <button type="button" className="btn btn-secondary btn-block">
                 Loading...
               </button>
