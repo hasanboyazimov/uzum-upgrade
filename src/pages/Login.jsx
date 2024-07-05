@@ -35,7 +35,10 @@ function Login() {
         <p className="text-7xl text-slate-100 text-center ">Login</p>
       </div>
       <div className="auth-right">
-        <Form action="post" className="flex flex-col gap-2 w-96 bg-base-100 shadow-xl p-8">
+        <Form
+          method="post"
+          className="flex flex-col gap-2 w-96 bg-base-100 shadow-xl p-8"
+        >
           <h1 className="text-3xl font-semibold text-center">Login</h1>
           <FormInput name="email" type="email" label="email" />
           <FormInput name="pasword" type="pasword" label="pasword" />

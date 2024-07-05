@@ -56,7 +56,9 @@ function Register() {
           <FormInput name="pasword" type="pasword" label="pasword" />
           <div className="mt-6">
             {isPending && (
-              <button disabled className="btn btn-primary btn-block">Loading...</button>
+              <button disabled className="btn btn-primary btn-block">
+                Loading...
+              </button>
             )}
             {!isPending && (
               <button className="btn btn-primary btn-block">Register</button>
@@ -64,7 +66,11 @@ function Register() {
           </div>
           <div className="w-full">
             {isPending && (
-              <button disabled type="button" className="btn btn-secondary btn-block">
+              <button
+                disabled
+                type="button"
+                className="btn btn-secondary btn-block"
+              >
                 Loading...
               </button>
             )}

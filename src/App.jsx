@@ -58,12 +58,12 @@ function App() {
     },
     {
       path: "/login",
-      element: user ? <Navigate to={"/"} /> : <Login />,
+      element: user ? <Navigate to="/" /> : <Login />,
       action: LoginAction,
     },
     {
       path: "/register",
-      element: user ? <Navigate to={"/"} /> : <Register />,
+      element: user ? <Navigate to="/" /> : <Register />,
       action: RegisterAction,
     },
   ]);
