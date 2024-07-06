@@ -2,8 +2,8 @@ import React from "react";
 
 function Carousel() {
   return (
-    <div>
-      <div className="carousel max-w-full rounded-box">
+    <div className="p-4">
+      <div className="carousel max-w-full rounded-box ">
         <div id="item1" className="carousel-item w-full">
           <img
             src="https://images.uzum.uz/cpth8ob6eisq2rkdkbk0/main_page_banner.jpg"

@@ -3,14 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-function Card({ product}) {
+function Card({ product }) {
   console.log(product);
 
   return (
     <>
       <Link to={"/" + product.id}>
-        <div className="card relative col-span-12 sm-20:col-span-12 sm-23:col-span-12 sm-37:col-span-12 md-960:col-span-12 lg-64:col-span-3 card-compact bg-base-100 w-[232px] mb-5 shadow-xl">
-          <figure className="w-60">
+        <div className="card relative col-span-12 sm-20:col-span-12 sm-23:col-span-12 sm-37:col-span-12 md-960:col-span-12 lg-64:col-span-3 card-compact bg-base-100 w-[160px] h-[320px] md:h-[400px] lg:h-[400px] xl:h-[400px] sm:w-[200px] md:w-[232px] lg:w-[232px] xl:w-[232px] mb-5 shadow-xl">
+          <figure className="">
             <img className="" src={product.thumbnail} alt={product.title} />
           </figure>
           <div className="card-body relative">

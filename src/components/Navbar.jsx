@@ -10,6 +10,9 @@ import {
 //Global contex
 import { useGlobalContext } from "../hooks/useGlobalContext";
 
+//react-router-dom
+import { Link } from "react-router-dom";
+
 //firebase
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
@@ -43,15 +46,17 @@ const Navbar = () => {
       </div>
       <nav className="flex flex-col md:flex-row justify-between items-center bg-white p-4 ">
         <div className="flex items-center mb-4 md:mb-0">
-          <img
-            src="./uzum-market-logo.png"
-            alt="Uzum Market Logo"
-            className="h-10 mr-4"
-          />
+          <Link to="/">
+            <img
+              className=" h-10 mr-4"
+              src="./uzum-market-logo.png"
+              alt="Uzum Market Logo"
+            />
+          </Link>
 
           <div
             data-tip="will be soon..."
-            className="tooltip px-4 py-2 bg-purple-100 text-purple-600 rounded cursor-pointer"
+            className="tooltip px-4 py-2 bg-purple-100 text-purple-600 rounded cursor-pointer hidden md:block sm:block lg:block xl:block"
           >
             Каталог
           </div>
@@ -66,7 +71,7 @@ const Navbar = () => {
             <FontAwesomeIcon icon={faMagnifyingGlass} />
           </button>
         </div>
-        <div className="flex coloum items-center text-gray-600">
+        <div className="flex coloum items-center  text-gray-600 justify-between h-auto">
           <div className="dropdown">
             <div tabIndex={0} role="button" className=" m-1">
               <div className="avatar flex-col">
@@ -93,7 +98,7 @@ const Navbar = () => {
           </div>
 
           <div className="tooltip" data-tip="will be soon...">
-            <button className="ml-0 md:ml-4 mb-4 md:mb-0">
+            <button className="ml-0 md:ml-4">
               {" "}
               <FontAwesomeIcon className="mr-2" icon={faHeart} />
               Избранное
@@ -101,12 +106,9 @@ const Navbar = () => {
           </div>
 
           <div className="tooltip" data-tip="will be soon...">
-            <button className="relative ml-0 md:ml-4">
+            <button className="ml-0 md:ml-4">
               <FontAwesomeIcon className="mr-2" icon={faBagShopping} />
               Корзина
-              <span className="absolute top-0 right-0 bg-purple-500 text-white text-xs rounded-full px-1.5">
-                1
-              </span>
             </button>
           </div>
         </div>
