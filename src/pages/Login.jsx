@@ -37,7 +37,7 @@ function Login() {
       <div className="auth-right">
         <Form
           method="post"
-          className="flex flex-col gap-2 w-96 bg-base-100 shadow-xl p-8"
+          className="flex flex-col gap-2 w-80 sm:w-96 md:w-96 lg:w-96 xl:w-96 bg-base-100 shadow-xl p-8"
         >
           <h1 className="text-3xl font-semibold text-center">Login</h1>
           <FormInput name="email" type="email" label="email" />

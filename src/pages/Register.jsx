@@ -41,13 +41,13 @@ function Register() {
     <div className="auth-container">
       <div className="auth-left">
         <p className="text-7xl text-slate-100 text-center transition">
-          Registar
+          Register
         </p>
       </div>
       <div className="auth-right">
         <Form
           method="post"
-          className="flex flex-col gap-2 w-96 bg-base-100 shadow-xl p-8"
+          className="flex flex-col gap-2 w-80 sm:w-96 md:w-96 lg:w-96 xl:w-96 bg-base-100 shadow-xl p-8"
         >
           <h1 className="text-3xl font-semibold text-center">Register</h1>
           <FormInput name="displayName" type="text" label="Your Name" />

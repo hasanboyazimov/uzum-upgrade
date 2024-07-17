@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Carousel() {
   return (
@@ -55,13 +56,27 @@ function Carousel() {
         </div>
       </div>
       <div className="flex w-full justify-center gap-2 py-2">
-        <a href="#item1" className="btn btn-xs">.</a>
-        <a href="#item2" className="btn btn-xs">.</a>
-        <a href="#item3" className="btn btn-xs">.</a>
-        <a href="#item4" className="btn btn-xs">.</a>
-        <a href="#item5" className="btn btn-xs">.</a>
-        <a href="#item6" className="btn btn-xs">.</a>
-        <a href="#item7" className="btn btn-xs">.</a>
+        <Link to="#item1" className="btn btn-xs">
+          .
+        </Link>
+        <Link to="#item2" className="btn btn-xs">
+          .
+        </Link>
+        <Link to="#item3" className="btn btn-xs">
+          .
+        </Link>
+        <Link to="#item4" className="btn btn-xs">
+          .
+        </Link>
+        <Link to="#item5" className="btn btn-xs">
+          .
+        </Link>
+        <Link to="#item6" className="btn btn-xs">
+          .
+        </Link>
+        <Link to="#item7" className="btn btn-xs">
+          .
+        </Link>
       </div>
     </div>
   );

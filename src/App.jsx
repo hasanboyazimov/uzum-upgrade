@@ -14,6 +14,7 @@ import ErrorPage from "./pages/ErrorPage";
 //actions
 import { action as RegisterAction } from "./pages/Register";
 import { action as LoginAction } from "./pages/Login";
+import { action as TodosAction } from "./pages/ToDoList";
 
 // componet
 import Protect from "./components/Protect";
@@ -23,10 +24,11 @@ import { useGlobalContext } from "./hooks/useGlobalContext";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebaseConfig";
+import Cart from "./pages/Cart";
+import ToDoList from "./pages/ToDoList";
 
 function App() {
   const { user, dispatch, isAuthReady } = useGlobalContext();
-  console.log(user);
   const routes = createBrowserRouter([
     {
       path: "/",
@@ -53,6 +55,15 @@ function App() {
         {
           path: "/:id",
           element: <SingleProduct />,
+        },
+        {
+          path: "/cart",
+          element: <Cart />,
+        },
+        {
+          path: "/todos",
+          element: <ToDoList />,
+          action: TodosAction,
         },
       ],
     },
